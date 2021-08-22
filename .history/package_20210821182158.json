@@ -1,0 +1,28 @@
+{
+    "name": "duan1",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        start: "",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/huudang2840/duan1.git"
+    },
+    "keywords": [
+        "duan1",
+        "nodejs"
+    ],
+    "author": "Dang Nguyen",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/huudang2840/duan1/issues"
+    },
+    "homepage": "https://github.com/huudang2840/duan1#readme",
+    "dependencies": {
+        "express": "^4.17.1",
+        "nodemon": "^2.0.12"
+    }
+}
