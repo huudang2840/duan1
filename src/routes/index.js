@@ -2,7 +2,6 @@ const sitesController = require('./sites');
 const newsRouter = require('./news');
 
 function route(app) {
-
     app.use('/news', newsRouter);
 
     app.use('/', sitesController);
