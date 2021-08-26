@@ -10,6 +10,11 @@ const path = require('path');
 
 const route = require('./routes');
 
+const db = require('./config/db');
+
+// Connect db
+db.connect();
+
 // POST
 app.use(
     express.urlencoded({

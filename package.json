@@ -23,14 +23,13 @@
         "url": "https://github.com/huudang2840/duan1/issues"
     },
     "homepage": "https://github.com/huudang2840/duan1#readme",
-
     "lint-staged": {
         "\"src/**/*.{js,json,scss}\"": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
     },
-
     "dependencies": {
         "express": "^4.17.1",
         "express-handlebars": "^5.3.3",
+        "mongoose": "^6.0.0",
         "morgan": "^1.10.0",
         "node-sass": "^6.0.1",
         "nodemon": "^2.0.12"
