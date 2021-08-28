@@ -15,7 +15,7 @@ class SitesController {
 
         Course.find({}).lean()
             .then(courses => res.render('home', {
-                courses: courses,
+                courses
             }))
             .catch(next);
     }
