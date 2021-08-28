@@ -18,8 +18,24 @@ class CoursesController {
     // [POST] courses/store
     store(req, res, next) {
         // res.json(req.body)
-        const course = new Course(req.body);
-        Course.create(course);
+        const formData = req.body;
+        formData.image = `https://img.youtube.com/vi/${formData.videoId}/sddefault.jpg`;
+        const course = new Course(formData);
+        course.save()
+            .then(() => res.redirect('/'))
+            .catch((err) => {
+
+            })
+
+    }
+
+    // [GET] courses/:id/edit
+    edit(req, res, next) {
+        Course.findById(req.params.id).lean()
+            .then(course => res.render('courses/edit', {
+                course
+            }))
+            .catch(next);
     }
 }
 
