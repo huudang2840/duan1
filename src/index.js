@@ -9,8 +9,9 @@ const handlebars = require('express-handlebars');
 const path = require('path');
 
 const route = require('./routes');
-
 const db = require('./config/db');
+
+const methodOverride = require('method-override');
 
 // Connect db
 db.connect();
@@ -22,6 +23,9 @@ app.use(
     }),
 );
 app.use(express.json());
+
+// Override phương thức
+app.use(methodOverride('_method'));
 
 //static
 app.use(express.static(path.join(__dirname, 'public')));
