@@ -47,7 +47,8 @@ class CoursesController {
             .catch(next)
     }
 
-    // [DELETE] courses/:id
+    // [DELETE] courses/:id 
+    // Xóa tạm thời
     destroy(req, res, next) {
         Course.delete({ _id: req.params.id })
             .then(() => res.redirect('back'))
@@ -67,6 +68,18 @@ class CoursesController {
         Course.deleteOne({ _id: req.params.id })
             .then(() => res.redirect('back'))
             .catch(next)
+    }
+
+    handleFormActions(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                Course.delete({ _id: { $in: req.body.courseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next)
+                break;
+            default:
+                res.json({ message: 'Action is invalid' })
+        }
     }
 
 }
