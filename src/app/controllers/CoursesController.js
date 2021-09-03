@@ -1,5 +1,6 @@
 const Course = require('../models/Course');
 const { mongooseToObject } = require('../../util/mongoose');
+const { response } = require('express');
 class CoursesController {
     // [GET] courses/:slug
     show(req, res, next) {
@@ -70,6 +71,9 @@ class CoursesController {
             .catch(next)
     }
 
+
+    // [POST]] courses/handle-form-actions
+    // Xóa tất cả
     handleFormActions(req, res, next) {
         switch (req.body.action) {
             case 'delete':
@@ -79,6 +83,26 @@ class CoursesController {
                 break;
             default:
                 res.json({ message: 'Action is invalid' })
+        }
+    }
+
+    // [POST]] courses/handle-trash-form-actions
+    // Xóa vinh vien/ khoi phuc tất cả
+    handleTrashFormActions(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                Course.deleteMany({ _id: { $in: req.body.checkedItemsIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next)
+                break;
+            case 'restore':
+                Course.restore({ _id: { $in: req.body.checkedItemsIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next)
+                break;
+            default:
+                res.json({ message: 'Action is invalid' })
+                break;
         }
     }
 
