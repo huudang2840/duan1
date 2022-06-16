@@ -9,7 +9,7 @@ async function connect() {
         console.log('Connect Success!!!');
 
     } catch (error) {
-        cosole.log(error);
+        console.log(error);
         console.log('Connect Fail!!!');
 
     }
